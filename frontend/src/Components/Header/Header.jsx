@@ -6,54 +6,54 @@ const Header = () => {
   const [isOpen2, setIsOpen2] = useState(false);
 
   return (
-    <nav class="bg-white shadow dark:bg-gray-800">
-      <div class="container px-6 py-3 mx-auto">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-center">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
+    <nav className="bg-white shadow dark:bg-gray-800 dark:border-b-2 border-gray-600">
+      <div className="container px-6 py-3 mx-auto">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
               <a
-                class="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
+                className="text-2xl font-bold text-gray-800 transition-colors duration-200 transform dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
                 href="/"
               >
                 E-connect
               </a>
 
-              <div class="hidden mx-10 md:block">
-                <div class="relative">
-                  <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <div className="hidden mx-10 md:block">
+                <div className="relative">
+                  <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                     <svg
-                      class="w-5 h-5 text-gray-400"
+                      className="w-5 h-5 text-gray-400"
                       viewBox="0 0 24 24"
                       fill="none"
                     >
                       <path
                         d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       ></path>
                     </svg>
                   </span>
 
                   <input
                     type="text"
-                    class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+                    className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
                     placeholder="Search"
                   />
                 </div>
               </div>
             </div>
 
-            <div class="flex md:hidden">
+            <div className="flex md:hidden">
               <button
                 type="button"
-                class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
+                className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
                 aria-label="toggle menu"
               >
-                <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
                   ></path>
                 </svg>
@@ -61,45 +61,45 @@ const Header = () => {
             </div>
           </div>
 
-          <div class="items-center md:flex">
-            <div class="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
+          <div className="items-center md:flex">
+            <div className="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
               <a
-                class="my-1 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
+                className="my-1 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
                 href="/"
               >
                 Home
               </a>
               <a
-                class="my-1 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
+                className="my-1 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
                 href="/"
               >
                 Blog
               </a>
               <a
-                class="my-1 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
+                className="my-1 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
                 href="/"
               >
                 Compoents
               </a>
               <a
-                class="my-1 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
+                className="my-1 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:mx-4 md:my-0"
                 href="/"
               >
                 Courses
               </a>
             </div>
 
-            <div class="flex items-center py-2 -mx-1 md:mx-0">
+            <div className="flex items-center py-2 -mx-1 md:mx-0 justify-end">
               {!isLogged ? (
                 <>
                   <a
-                    class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-gray-500 rounded-md hover:bg-blue-600 md:mx-2 md:w-auto"
+                    className="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-gray-500 rounded-md hover:bg-blue-600 md:mx-2 md:w-auto"
                     href="/"
                   >
                     Login
                   </a>
                   <a
-                    class="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 md:mx-0 md:w-auto"
+                    className="block w-1/2 px-3 py-2 mx-1 text-sm font-medium leading-5 text-center text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-600 md:mx-0 md:w-auto"
                     href="/"
                   >
                     Join free
@@ -107,18 +107,18 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <div class="flex items-center mt-4 md:mt-0 gap-2">
-                    <div class="flex items-center justify-center bg-gray-100">
-                      <div class="relative inline-block dark:bg-gray-800">
+                  <div className="flex items-center mt-4 md:mt-0 gap-2">
+                    <div className="flex items-center justify-center bg-gray-100">
+                      <div className="relative inline-block dark:bg-gray-800">
                         <button
                           onClick={() => {
                             setIsOpen2(false);
                             setIsOpen(!isOpen);
                           }}
-                          class="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
+                          className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
                         >
                           <svg
-                            class="w-5 h-5 text-gray-800 dark:text-white fill-current"
+                            className="w-5 h-5 text-gray-800 dark:text-white fill-current"
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -127,28 +127,31 @@ const Header = () => {
                         </button>
 
                         <div
-                          class=" absolute invisible right-0 z-20 mt-2 overflow-hidden bg-white rounded-md shadow-lg w-80 dark:bg-gray-800 transition-opacity ease-in"
+                          className=" absolute invisible right-0 z-20 mt-2 overflow-hidden bg-white rounded-md shadow-lg w-80 dark:bg-gray-800 transition-opacity ease-in"
                           style={{
                             visibility: isOpen && "visible",
                             opacity: isOpen ? 1 : 0,
                           }}
                         >
-                          <div class="py-2">
+                          <div className="py-2">
                             <a
                               href="#"
-                              class="flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700"
+                              className="flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700"
                             >
                               <img
-                                class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
+                                className="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
                                 src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
                                 alt="avatar"
                               />
-                              <p class="mx-2 text-sm text-gray-600 dark:text-white">
-                                <span class="font-bold" href="#">
+                              <p className="mx-2 text-sm text-gray-600 dark:text-white">
+                                <span className="font-bold" href="#">
                                   Sara Salah
                                 </span>{" "}
                                 replied on the{" "}
-                                <span class="font-bold text-blue-500" href="#">
+                                <span
+                                  className="font-bold text-blue-500"
+                                  href="#"
+                                >
                                   Upload Image
                                 </span>{" "}
                                 artical . 2m
@@ -156,15 +159,15 @@ const Header = () => {
                             </a>
                             <a
                               href="#"
-                              class="flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700"
+                              className="flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700"
                             >
                               <img
-                                class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
+                                className="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
                                 src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
                                 alt="avatar"
                               />
-                              <p class="mx-2 text-sm text-gray-600 dark:text-white">
-                                <span class="font-bold" href="#">
+                              <p className="mx-2 text-sm text-gray-600 dark:text-white">
+                                <span className="font-bold" href="#">
                                   Slick Net
                                 </span>{" "}
                                 start following you . 45m
@@ -172,19 +175,22 @@ const Header = () => {
                             </a>
                             <a
                               href="#"
-                              class="flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700"
+                              className="flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700"
                             >
                               <img
-                                class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
+                                className="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
                                 src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
                                 alt="avatar"
                               />
-                              <p class="mx-2 text-sm text-gray-600 dark:text-white">
-                                <span class="font-bold" href="#">
+                              <p className="mx-2 text-sm text-gray-600 dark:text-white">
+                                <span className="font-bold" href="#">
                                   Jane Doe
                                 </span>{" "}
                                 Like Your reply on{" "}
-                                <span class="font-bold text-blue-500" href="#">
+                                <span
+                                  className="font-bold text-blue-500"
+                                  href="#"
+                                >
                                   Test with TDD
                                 </span>{" "}
                                 artical . 1h
@@ -192,28 +198,28 @@ const Header = () => {
                             </a>
                             <a
                               href="#"
-                              class="flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform hover:bg-gray-100 dark:hover:bg-gray-700"
+                              className="flex items-center px-4 py-3 -mx-2 transition-colors duration-200 transform hover:bg-gray-100 dark:hover:bg-gray-700"
                             >
                               <img
-                                class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
+                                className="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
                                 src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=398&q=80"
                                 alt="avatar"
                               />
-                              <p class="mx-2 text-sm text-gray-600 dark:text-white">
-                                <span class="font-bold" href="#">
+                              <p className="mx-2 text-sm text-gray-600 dark:text-white">
+                                <span className="font-bold" href="#">
                                   Abigail Bennett
                                 </span>{" "}
                                 start following you . 3h
                               </p>
                             </a>
 
-                            <p class="mx-2 text-sm text-center text-gray-600 dark:text-white font-bold">
+                            <p className="mx-2 text-sm text-center text-gray-600 dark:text-white font-bold">
                               Notifications
                             </p>
                           </div>
                           <a
                             href="#"
-                            class="block py-2 font-bold text-center text-white bg-gray-800 dark:bg-gray-700 hover:underline"
+                            className="block py-2 font-bold text-center text-white bg-gray-800 dark:bg-gray-700 hover:underline"
                           >
                             See all notifications
                           </a>
@@ -221,26 +227,26 @@ const Header = () => {
                       </div>
                     </div>
 
-                    <div class="relative inline-block ">
+                    <div className="relative inline-block ">
                       <button
                         data-dropdown-toggle="dropdown"
                         onClick={() => {
                           setIsOpen(false);
                           setIsOpen2(!isOpen2);
                         }}
-                        class="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none"
+                        className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none"
                       >
-                        <div class="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
+                        <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
                           <img
                             src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200"
-                            class="object-cover w-full h-full"
+                            className="object-cover w-full h-full"
                             alt="avatar"
                           />
                         </div>
 
-                        <span class="mx-1">Jane Doe</span>
+                        <span className="mx-1">Jane Doe</span>
                         <svg
-                          class="w-5 h-5 mx-1"
+                          className="w-5 h-5 mx-1"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +260,7 @@ const Header = () => {
 
                       <div
                         id="dropdown"
-                        class="absolute invisible right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800 transition-opacity ease-in"
+                        className="absolute invisible right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800 transition-opacity ease-in"
                         style={{
                           visibility: isOpen2 && "visible",
                           opacity: isOpen2 ? 1 : 0,
@@ -262,31 +268,31 @@ const Header = () => {
                       >
                         <a
                           href="#"
-                          class="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <img
-                            class="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
+                            className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
                             src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200"
                             alt="jane avatar"
                           />
-                          <div class="mx-1">
-                            <h1 class="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                          <div className="mx-1">
+                            <h1 className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                               Jane Doe
                             </h1>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                            <p className="text-sm text-gray-500 dark:text-gray-400">
                               janedoe@exampl.com
                             </p>
                           </div>
                         </a>
 
-                        <hr class="border-gray-200 dark:border-gray-700 " />
+                        <hr className="border-gray-200 dark:border-gray-700 " />
 
                         <a
                           href="#"
-                          class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <svg
-                            class="w-5 h-5 mx-1"
+                            className="w-5 h-5 mx-1"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -301,15 +307,15 @@ const Header = () => {
                             ></path>
                           </svg>
 
-                          <span class="mx-1">view profile</span>
+                          <span className="mx-1">view profile</span>
                         </a>
 
                         <a
                           href="#"
-                          class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <svg
-                            class="w-5 h-5 mx-1"
+                            className="w-5 h-5 mx-1"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -320,15 +326,15 @@ const Header = () => {
                             ></path>
                           </svg>
 
-                          <span class="mx-1">Settings</span>
+                          <span className="mx-1">Settings</span>
                         </a>
 
                         <a
                           href="#"
-                          class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <svg
-                            class="w-5 h-5 mx-1"
+                            className="w-5 h-5 mx-1"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -339,17 +345,17 @@ const Header = () => {
                             ></path>
                           </svg>
 
-                          <span class="mx-1">Keyboard shortcuts</span>
+                          <span className="mx-1">Keyboard shortcuts</span>
                         </a>
 
-                        <hr class="border-gray-200 dark:border-gray-700 " />
+                        <hr className="border-gray-200 dark:border-gray-700 " />
 
                         <a
                           href="#"
-                          class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <svg
-                            class="w-5 h-5 mx-1"
+                            className="w-5 h-5 mx-1"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -360,15 +366,15 @@ const Header = () => {
                             ></path>
                           </svg>
 
-                          <span class="mx-1">Company profile</span>
+                          <span className="mx-1">Company profile</span>
                         </a>
 
                         <a
                           href="#"
-                          class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <svg
-                            class="w-5 h-5 mx-1"
+                            className="w-5 h-5 mx-1"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -391,15 +397,15 @@ const Header = () => {
                             ></path>
                           </svg>
 
-                          <span class="mx-1">Team</span>
+                          <span className="mx-1">Team</span>
                         </a>
 
                         <a
                           href="#"
-                          class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <svg
-                            class="w-5 h-5 mx-1"
+                            className="w-5 h-5 mx-1"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -410,17 +416,17 @@ const Header = () => {
                             ></path>
                           </svg>
 
-                          <span class="mx-1">Invite colleagues</span>
+                          <span className="mx-1">Invite colleagues</span>
                         </a>
 
-                        <hr class="border-gray-200 dark:border-gray-700 " />
+                        <hr className="border-gray-200 dark:border-gray-700 " />
 
                         <a
                           href="#"
-                          class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <svg
-                            class="w-5 h-5 mx-1"
+                            className="w-5 h-5 mx-1"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -431,14 +437,14 @@ const Header = () => {
                             ></path>
                           </svg>
 
-                          <span class="mx-1">Help</span>
+                          <span className="mx-1">Help</span>
                         </a>
                         <a
                           href="#"
-                          class="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                          className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
                           <svg
-                            class="w-5 h-5 mx-1"
+                            className="w-5 h-5 mx-1"
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
@@ -449,7 +455,7 @@ const Header = () => {
                             ></path>
                           </svg>
 
-                          <span class="mx-1">Sign Out</span>
+                          <span className="mx-1">Sign Out</span>
                         </a>
                       </div>
                     </div>
@@ -458,27 +464,27 @@ const Header = () => {
               )}
             </div>
 
-            <div class="mt-3 md:hidden">
-              <div class="relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <div className="mt-3 md:hidden">
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <svg
-                    class="w-5 h-5 text-gray-400"
+                    className="w-5 h-5 text-gray-400"
                     viewBox="0 0 24 24"
                     fill="none"
                   >
                     <path
                       d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></path>
                   </svg>
                 </span>
 
                 <input
                   type="text"
-                  class="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
+                  className="w-full py-2 pl-10 pr-4 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300"
                   placeholder="Search"
                 />
               </div>
@@ -486,69 +492,69 @@ const Header = () => {
           </div>
         </div>
 
-        <div class="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
+        <div className="py-3 mt-3 -mx-3 overflow-y-auto whitespace-nowrap scroll-hidden">
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             DSA
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             Maths
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             Science
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             Coding
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             JavaScript
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             React
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             Vue
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             Next js
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             Tailwindcss
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             Meraki UI
           </a>
           <a
-            class="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
+            className="mx-4 text-sm leading-5 text-gray-700 transition-colors duration-200 transform dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline md:my-0"
             href="/"
           >
             Ruby

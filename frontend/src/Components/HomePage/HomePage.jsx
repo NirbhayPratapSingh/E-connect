@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const HomePage = () => {
   return (
-    <div class="container px-6 py-16 mx-auto">
-      <div class="items-center lg:flex">
-        <div class="w-full lg:w-1/2">
-          <div class="lg:max-w-lg">
-            <h1 class="text-2xl font-semibold text-gray-800 uppercase dark:text-white lg:text-3xl">
+    <div className="container px-6 py-16 mx-auto">
+      <div className="items-center lg:flex">
+        <div className="w-full lg:w-1/2">
+          <div className="lg:max-w-lg">
+            <h1 className="text-2xl font-semibold text-gray-800 uppercase dark:text-white lg:text-3xl">
               Best Place To Find Your Learning Partner
             </h1>
-            <p class="mt-2 text-gray-600 dark:text-gray-400">
+            <p className="mt-2 text-gray-600 dark:text-gray-400">
               learning with others is a manner of group learning that enhances
               communication skills, cultural awareness, thinking skills and so
               much more.
@@ -17,7 +17,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
+        <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
           <video
             autoPlay
             loop
@@ -32,7 +32,7 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

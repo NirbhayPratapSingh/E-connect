@@ -8,7 +8,7 @@ import Header from './Components/Header/Header'
 
 function App() {
   return (
-    <div>
+    <div className="bg-white shadow dark:bg-gray-800">
       <Header />
 
       <Routes>
