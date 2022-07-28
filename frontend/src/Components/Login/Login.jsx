@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Login = () => {
   return (
@@ -9,7 +9,7 @@ const Login = () => {
             className="hidden bg-cover lg:block lg:w-2/3"
             style={{
               backgroundImage:
-                'url(https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
+                "url(https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)",
             }}
           >
             <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
@@ -63,7 +63,7 @@ const Login = () => {
                         Password
                       </label>
                       <a
-                        href="#"
+                        href="/"
                         className="text-sm text-gray-400 focus:text-blue-500 hover:text-blue-500 hover:underline"
                       >
                         Forgot password?
@@ -87,9 +87,9 @@ const Login = () => {
                 </form>
 
                 <p className="mt-6 text-sm text-center text-gray-400">
-                  Don&#x27;t have an account yet?{' '}
+                  Don&#x27;t have an account yet?{" "}
                   <a
-                    href="#"
+                    href="/"
                     className="text-blue-500 focus:outline-none focus:underline hover:underline"
                   >
                     Sign up
@@ -102,7 +102,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
