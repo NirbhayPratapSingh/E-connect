@@ -213,9 +213,9 @@ const Header = () => {
                               </p>
                             </a>
 
-                            <p className="mx-2 text-sm text-center text-gray-600 dark:text-white font-bold">
+                            {/* <p className="mx-2 text-sm text-center text-gray-600 dark:text-white font-bold">
                               Notifications
-                            </p>
+                            </p> */}
                           </div>
                           <a
                             href="#"
