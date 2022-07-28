@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
-const Connection = mongoose.connect("mongodb://localhost:27017/econnect");
+require('dotenv').config()
+const Connection = mongoose.connect(process.env.MONGO_LINK);
 
 module.exports = Connection;

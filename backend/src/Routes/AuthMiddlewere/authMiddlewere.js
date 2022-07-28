@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const Authorization = async (req, res, next) => {
   const accessToken = req.cookies.accessToken
   const refreshToken = req.cookies.refreshToken
+  
 
   if (!accessToken || !refreshToken) {
     return res.status(401).send({ error: 'authorization failed' })
@@ -33,10 +34,10 @@ const Authorization = async (req, res, next) => {
           },
         )
       }
-
+      console.log('iam coming man', jwt.decoded)
       const { username, email } = decoded
-        // res.status(200).send({ username, email })
-        next()
+      // res.status(200).send({ username, email })
+      next()
     },
   )
 }

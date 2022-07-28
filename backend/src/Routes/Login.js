@@ -10,7 +10,7 @@ route.post('/', async (req, res) => {
     return res.status(401).send({ error: 'please provide all the fields' })
   }
   try {
-    const user = await userModel.find(req.body)
+    const user = await userModel.findOne(req.body)
 
     if (!user) {
       return res.status(401).send({
@@ -22,14 +22,16 @@ route.post('/', async (req, res) => {
       expiresIn: '7d',
     })
     const accessToken = jwt.sign({ username, email }, process.env.JWTSECRET, {
-      expiresIn: '15min',
+      expiresIn: '15m',
     })
 
-    res.cookie('refreshToken', refreshToken)
-    res.cookie('accessToken', accessToken)
+    res.cookie('refreshToken', refreshToken, { httpOnly: true ,secure:false,})
+    res.cookie('accessToken', accessToken, { httpOnly: true ,secure:false})
 
-    res.send({ username, email })
+    res.send({ username: user.username, email: user.email })
   } catch (e) {
     res.status(500).send({ error: 'something wrong in login' })
   }
 })
+
+module.exports = route

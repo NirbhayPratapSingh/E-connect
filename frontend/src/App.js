@@ -26,7 +26,11 @@ function App() {
           <ErrorPage />
         } />
       </Routes>
-      <Footer/>
+
+
+      {
+        location.pathname === "/login" || location.pathname === "/signup" ? null : <Footer />
+      }
     </div>
   )
 }

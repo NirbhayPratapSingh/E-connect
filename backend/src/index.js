@@ -7,10 +7,10 @@ const cookieParser = require('cookie-parser')
 const Login = require('./Routes/Login')
 const Signup = require('./Routes/Signup')
 require('dotenv').config()
-
 const app = express()
 const server = http.createServer(app)
 const io = new Server(server)
+const Authorization = require('./Routes/AuthMiddlewere/authMiddlewere')
 
 const port = process.env.PORT || 8080
 
@@ -25,11 +25,11 @@ app.use(
   }),
 )
 
-app.get('/', (req, res) => {
+app.get('/', Authorization, (req, res) => {
   res.send('Welcome')
 })
-// app.use('/login', Login)
-// app.use('/signup', Signup)
+app.use('/login', Login)
+app.use('/signup', Signup)
 
 server.listen(port, async (err, res) => {
   try {
