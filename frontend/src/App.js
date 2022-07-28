@@ -4,6 +4,7 @@ import HomePage from './Components/HomePage/HomePage'
 import Login from './Components/Login/Login'
 import Signup from './Components/Login/Signup'
 import './App.css'
+import Header from './Components/Header/Header'
 
 function App() {
   return (
