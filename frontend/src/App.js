@@ -5,6 +5,7 @@ import Login from './Components/Login/Login'
 import Signup from './Components/Login/Signup'
 import './App.css'
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer.jsx/Footer'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
+      <Footer/>
     </div>
   )
 }
