@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Signup = () => {
   return (
@@ -9,7 +9,7 @@ const Signup = () => {
             className="hidden bg-cover lg:block lg:w-2/3"
             style={{
               backgroundImage:
-                'url(https://images.unsplash.com/photo-1588702547919-26089e690ecc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
+                "url(https://images.unsplash.com/photo-1588702547919-26089e690ecc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)",
             }}
           >
             <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
@@ -40,7 +40,7 @@ const Signup = () => {
                 <form>
                   <div>
                     <label
-                      for="email"
+                      htmlFor="email"
                       className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
                     >
                       Username
@@ -55,7 +55,7 @@ const Signup = () => {
                   </div>
                   <div className="mt-6">
                     <label
-                      for="email"
+                      htmlFor="email"
                       className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
                     >
                       Email Address
@@ -72,7 +72,7 @@ const Signup = () => {
                   <div className="mt-6">
                     <div className="flex justify-between mb-2">
                       <label
-                        for="password"
+                        htmlFor="password"
                         className="text-sm text-gray-600 dark:text-gray-200"
                       >
                         Password
@@ -90,7 +90,7 @@ const Signup = () => {
                   <div className="mt-6">
                     <div className="flex justify-between mb-2">
                       <label
-                        for="password"
+                        htmlFor="password"
                         className="text-sm text-gray-600 dark:text-gray-200"
                       >
                         Confirm Password
@@ -114,9 +114,9 @@ const Signup = () => {
                 </form>
 
                 <p className="mt-6 text-sm text-center text-gray-400">
-                  Already have an account ?{' '}
+                  Already have an account ?{" "}
                   <a
-                    href="#"
+                    href="/"
                     className="text-blue-500 focus:outline-none focus:underline hover:underline"
                   >
                     Sign in
@@ -129,7 +129,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;
