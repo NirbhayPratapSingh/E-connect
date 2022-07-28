@@ -5,6 +5,7 @@ import Login from './Components/Login/Login'
 import Signup from './Components/Login/Signup'
 import './App.css'
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer.jsx/Footer'
 import ErrorPage from './Components/ErrorPage/ErrorPage'
 import { useState } from 'react';
 
@@ -25,6 +26,7 @@ function App() {
           <ErrorPage />
         } />
       </Routes>
+      <Footer/>
     </div>
   )
 }
