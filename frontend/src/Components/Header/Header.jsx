@@ -1,9 +1,33 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
+
+/**
+ * Hook that alerts clicks outside of the passed ref
+ */
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isMenu, setIsMenu] = useState(false);
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setIsOpen(false);
+          setIsOpen2(false);
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
 
   return (
     <nav className="bg-white shadow dark:bg-gray-800 dark:border-b-2 border-gray-600">
@@ -96,7 +120,10 @@ const Header = () => {
 
             <div className="flex items-center py-2 -mx-1 md:mx-0 justify-end">
               <div className="flex items-center mt-4 md:mt-0 gap-2">
-                <div className="flex items-center justify-center bg-gray-100">
+                <div
+                  ref={wrapperRef}
+                  className="flex items-center justify-center bg-gray-100"
+                >
                   <div className="relative inline-block dark:bg-gray-800">
                     <button
                       onClick={() => {
@@ -115,7 +142,7 @@ const Header = () => {
                     </button>
 
                     <div
-                      className=" absolute invisible right-0 z-20 mt-2 overflow-hidden bg-white rounded-md shadow-lg w-80 dark:bg-gray-800 transition-opacity ease-in"
+                      className="absolute invisible right-0 z-20 mt-2 overflow-hidden bg-white rounded-md shadow-lg w-80 dark:bg-gray-800 transition-opacity ease-in border dark:border-gray-600"
                       style={{
                         visibility: isOpen && "visible",
                         opacity: isOpen ? 1 : 0,
@@ -209,7 +236,7 @@ const Header = () => {
                   </div>
                 </div>
 
-                <div className="relative inline-block ">
+                <div ref={wrapperRef} className="relative inline-block ">
                   <button
                     data-dropdown-toggle="dropdown"
                     onClick={() => {
@@ -242,7 +269,7 @@ const Header = () => {
 
                   <div
                     id="dropdown"
-                    className="absolute invisible right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800 transition-opacity ease-in"
+                    className="absolute invisible right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800 transition-opacity ease-in border dark:border-gray-600"
                     style={{
                       visibility: isOpen2 && "visible",
                       opacity: isOpen2 ? 1 : 0,
