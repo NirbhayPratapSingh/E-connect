@@ -3,6 +3,9 @@ const express = require('express');
 const Connection = require('./server/server');
 const cors = require('cors');
 const { Server } = require("socket.io");
+const cookieParser = require("cookie-parser")
+const Login = require("./Routes/Login")
+const Signup = require("./Routes/Signup")
 
 const app = express();
 const server = http.createServer(app);
@@ -13,6 +16,7 @@ const port = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
+app.use(cookieParser())
 
 app.use(
     cors({
@@ -23,6 +27,8 @@ app.use(
 app.get("/", (req, res) => {
     res.send("Welcome")
 })
+app.use("/login", Login);
+app.use("/signup",Signup)
 
 server.listen(port, async (err, res) => {
     try {
