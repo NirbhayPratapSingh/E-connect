@@ -2,9 +2,9 @@ const { Router } = require('express')
 const userModel = require('../Models/User')
 const jwt = require('jsonwebtoken')
 
-const route = Router()
+const Signup = Router()
 
-route.post('/', async (req, res) => {
+Signup.post('/', async (req, res) => {
   const { username, password, email } = req.body
   if (!username || !password || !email) {
     return res.status(401).send({ error: 'please provide all fields' })
@@ -39,3 +39,6 @@ route.post('/', async (req, res) => {
     res.status(500).send({ error: 'something went wrong in signup' })
   }
 })
+
+module.exports = Signup;
+

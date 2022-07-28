@@ -33,3 +33,6 @@ route.post('/', async (req, res) => {
     res.status(500).send({ error: 'something wrong in login' })
   }
 })
+
+
+module.exports = route;
