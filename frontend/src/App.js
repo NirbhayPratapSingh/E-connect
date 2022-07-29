@@ -12,11 +12,31 @@ import { useContext } from 'react'
 import { AuthContext, AuthProvider } from './contextApi/AuthContext'
 import Chat from './Components/Chat/Chat'
 import { useNavigate, Navigate } from 'react-router-dom'
+import axios from 'axios'
 
 function App() {
   const location = useLocation()
-  const { login } = useContext(AuthContext)
+  const { login, setLogin } = useContext(AuthContext)
   const navigate = useNavigate()
+
+  const handleLogin = async () => {
+    try {
+      const data = await axios.get('http://localhost:8080/login', {
+        withCredentials: true,
+        credentials: 'include',
+      })
+
+      console.log(data.data, 'useeffce')
+      setLogin(data.data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    // setLogin(data.data)
+    handleLogin()
+  }, [])
 
   return (
     <div className="bg-white shadow dark:bg-gray-800">

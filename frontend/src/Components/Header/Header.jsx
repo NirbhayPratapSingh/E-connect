@@ -1,33 +1,56 @@
-import React, { useRef, useEffect, useState } from "react";
+import axios from 'axios'
+import React, { useRef, useEffect, useState, useContext } from 'react'
+import { AuthContext } from '../../contextApi/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 /**
  * Hook that alerts clicks outside of the passed ref
  */
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
-  const [isMenu, setIsMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen2, setIsOpen2] = useState(false)
+  const [isMenu, setIsMenu] = useState(false)
+  const Navigate = useNavigate()
+
+  const { login } = useContext(AuthContext)
+
+  const handleLogout = async () => {
+    try {
+      const data = await axios.post(
+        'http://localhost:8080/logout',
+        {},
+        {
+          credentials: 'include',
+          withCredentials: true,
+        },
+      )
+      console.log(data.data, 'logout')
+      Navigate('/login')
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setIsOpen(false);
-          setIsOpen2(false);
+          setIsOpen(false)
+          setIsOpen2(false)
         }
       }
       // Bind the event listener
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside)
       return () => {
         // Unbind the event listener on clean up
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
+        document.removeEventListener('mousedown', handleClickOutside)
+      }
+    }, [ref])
   }
 
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  const wrapperRef = useRef(null)
+  useOutsideAlerter(wrapperRef)
 
   return (
     <nav className="bg-white shadow dark:bg-gray-800 dark:border-b-2 border-gray-600">
@@ -89,7 +112,7 @@ const Header = () => {
           <div className="items-center md:flex">
             <div
               className={`flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1 ${
-                !isMenu && "hidden"
+                !isMenu && 'hidden'
               }`}
             >
               <a
@@ -127,8 +150,8 @@ const Header = () => {
                   <div className="relative inline-block dark:bg-gray-800">
                     <button
                       onClick={() => {
-                        setIsOpen2(false);
-                        setIsOpen(!isOpen);
+                        setIsOpen2(false)
+                        setIsOpen(!isOpen)
                       }}
                       className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
                     >
@@ -144,7 +167,7 @@ const Header = () => {
                     <div
                       className="absolute invisible right-0 z-20 mt-2 overflow-hidden bg-white rounded-md shadow-lg w-80 dark:bg-gray-800 transition-opacity ease-in border dark:border-gray-600"
                       style={{
-                        visibility: isOpen && "visible",
+                        visibility: isOpen && 'visible',
                         opacity: isOpen ? 1 : 0,
                       }}
                     >
@@ -161,11 +184,11 @@ const Header = () => {
                           <p className="mx-2 text-sm text-gray-600 dark:text-white">
                             <span className="font-bold" href="/">
                               Sara Salah
-                            </span>{" "}
-                            replied on the{" "}
+                            </span>{' '}
+                            replied on the{' '}
                             <span className="font-bold text-blue-500" href="/">
                               Upload Image
-                            </span>{" "}
+                            </span>{' '}
                             artical . 2m
                           </p>
                         </a>
@@ -181,7 +204,7 @@ const Header = () => {
                           <p className="mx-2 text-sm text-gray-600 dark:text-white">
                             <span className="font-bold" href="/">
                               Slick Net
-                            </span>{" "}
+                            </span>{' '}
                             start following you . 45m
                           </p>
                         </a>
@@ -197,11 +220,11 @@ const Header = () => {
                           <p className="mx-2 text-sm text-gray-600 dark:text-white">
                             <span className="font-bold" href="/">
                               Jane Doe
-                            </span>{" "}
-                            Like Your reply on{" "}
+                            </span>{' '}
+                            Like Your reply on{' '}
                             <span className="font-bold text-blue-500" href="/">
                               Test with TDD
-                            </span>{" "}
+                            </span>{' '}
                             artical . 1h
                           </p>
                         </a>
@@ -217,7 +240,7 @@ const Header = () => {
                           <p className="mx-2 text-sm text-gray-600 dark:text-white">
                             <span className="font-bold" href="/">
                               Abigail Bennett
-                            </span>{" "}
+                            </span>{' '}
                             start following you . 3h
                           </p>
                         </a>
@@ -240,20 +263,18 @@ const Header = () => {
                   <button
                     data-dropdown-toggle="dropdown"
                     onClick={() => {
-                      setIsOpen(false);
-                      setIsOpen2(!isOpen2);
+                      setIsOpen(false)
+                      setIsOpen2(!isOpen2)
                     }}
                     className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none"
                   >
                     <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
-                      <img
-                        src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200"
-                        className="object-cover w-full h-full"
-                        alt="avatar"
-                      />
+                      <div className="w-full h-full relative bg-black text-white font-bold rounded-full flex justify-center items-center">
+                        {login.username && login.username[0].toUpperCase()}
+                      </div>
                     </div>
 
-                    <span className="mx-1">Jane Doe</span>
+                    <span className="mx-1">{login.username}</span>
                     <svg
                       className="w-5 h-5 mx-1"
                       viewBox="0 0 24 24"
@@ -271,7 +292,7 @@ const Header = () => {
                     id="dropdown"
                     className="absolute invisible right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800 transition-opacity ease-in border dark:border-gray-600"
                     style={{
-                      visibility: isOpen2 && "visible",
+                      visibility: isOpen2 && 'visible',
                       opacity: isOpen2 ? 1 : 0,
                     }}
                   >
@@ -279,17 +300,15 @@ const Header = () => {
                       href="/"
                       className="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                     >
-                      <img
-                        className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
-                        src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200"
-                        alt="jane avatar"
-                      />
+                      <div className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9 bg-black text-white font-bold flex justify-center items-center">
+                        {login.username && login.username[0].toUpperCase()}
+                      </div>
                       <div className="mx-1">
                         <h1 className="text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Jane Doe
+                          {login.username}
                         </h1>
                         <p className="text-sm text-gray-500 dark:text-gray-400">
-                          janedoe@exampl.com
+                          {login.email}
                         </p>
                       </div>
                     </a>
@@ -449,8 +468,8 @@ const Header = () => {
                       <span className="mx-1">Help</span>
                     </a>
                     <a
-                      href="/"
-                      className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+                      onClick={handleLogout}
+                      className="flex items-center cursor-pointer p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                     >
                       <svg
                         className="w-5 h-5 mx-1"
@@ -464,7 +483,7 @@ const Header = () => {
                         ></path>
                       </svg>
 
-                      <span className="mx-1">Sign Out</span>
+                      <span className="mx-1">Logout</span>
                     </a>
                   </div>
                 </div>
@@ -569,7 +588,7 @@ const Header = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

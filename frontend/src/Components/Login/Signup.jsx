@@ -27,7 +27,10 @@ const Signup = () => {
     }
 
     try {
-      const data = await axios.post('http://localhost:8080/signup', form)
+      const data = await axios.post('http://localhost:8080/signup', form,{
+        credentials: 'include',
+        withCredentials: true,
+      })
 
       setIsLogin(data.data)
       notify('login successfull')

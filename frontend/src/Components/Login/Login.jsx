@@ -25,7 +25,10 @@ const Login = () => {
     }
 
     try {
-      const data = await axios.post('http://localhost:8080/login', form)
+      const data = await axios.post('http://localhost:8080/login', form,{
+        credentials: 'include',
+        withCredentials: true,
+      })
 
       setLogin(data.data)
       notify('login successfull')
