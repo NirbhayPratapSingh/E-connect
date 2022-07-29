@@ -49,7 +49,7 @@ route.post('/', async (req, res) => {
     res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false })
     res.cookie('accessToken', accessToken, { httpOnly: true, secure: false })
 
-    res.send({ username, email })
+    res.send({ username: exist.username, email })
   } catch (e) {
     res.status(500).send({ error: 'something wrong in login' })
   }
