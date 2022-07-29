@@ -27,7 +27,7 @@ function App() {
         credentials: 'include',
       })
 
-      console.log(data.data, 'useeffce')
+      // console.log(data.data, 'useeffce')
       setLogin(data.data)
     } catch (e) {
       console.log(e)
