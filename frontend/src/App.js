@@ -16,13 +16,13 @@ import Main from './Components/Main/Main'
 function App() {
   const location = useLocation()
   const { login } = useContext(AuthContext)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   return (
     <div className="bg-white shadow dark:bg-gray-800">
       {location.pathname === '/login' ||
         location.pathname === '/signup' ||
-        location.pathname === '/chat' ? null : (
+        location.pathname === '/chat' || !login ? null : (
         <Header />
       )}
 
@@ -36,7 +36,7 @@ function App() {
 
       {location.pathname === '/login' ||
         location.pathname === '/signup' ||
-        location.pathname == '/chat' ? null : (
+        location.pathname == '/chat' || !login ? null : (
         <Footer />
       )}
     </div>

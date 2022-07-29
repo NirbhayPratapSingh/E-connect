@@ -1,40 +1,43 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
-import { AuthContext } from '../../contextApi/AuthContext'
+import React, { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contextApi/AuthContext";
 
 const Login = () => {
-  const [form, setForm] = useState({})
-  const [isLogin, setIsLogin] = useState({})
-  const notify = (msg) => toast(msg)
-  const navigate = useNavigate()
+  const [form, setForm] = useState({});
+  const [isLogin, setIsLogin] = useState({});
+  const notify = (msg) => toast(msg);
+  const navigate = useNavigate();
 
-  const { login, setLogin } = useContext(AuthContext)
+  const { login, setLogin } = useContext(AuthContext);
   // console.log(login, setLogin)
 
   const loginHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!form.email || !form.password) {
-      return notify('please provide username  & password')
+      return notify("please provide username  & password");
     }
     if (form.password.length < 6) {
-      return notify('password will be minimum 6 charcters')
+      return notify("password will be minimum 6 charcters");
     }
 
     try {
-      const data = await axios.post('http://localhost:8080/login', form)
+      const data = await axios.post("http://localhost:8080/login", form, {
+        credentials: "include",
+        withCredentials: true,
+      });
 
-      setLogin(data.data)
-      notify('login successfull')
-      navigate('/')
+      setLogin(data.data);
+      notify("login successfull");
+      navigate("/");
     } catch (e) {
-      console.log(e)
-      notify(e.response.data.error)
+      console.log(e);
+      notify(e.response.data.error);
     }
-  }
+  };
 
   return (
     <div>
@@ -44,7 +47,7 @@ const Login = () => {
             className="hidden bg-cover lg:block lg:w-2/3"
             style={{
               backgroundImage:
-                'url(https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
+                "url(https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)",
             }}
           >
             <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
@@ -131,9 +134,9 @@ const Login = () => {
                 </form>
 
                 <p className="mt-6 text-sm text-center text-gray-400">
-                  Don&#x27;t have an account yet?{' '}
+                  Don&#x27;t have an account yet?{" "}
                   <button
-                    onClick={() => navigate('/signup')}
+                    onClick={() => navigate("/signup")}
                     className="text-blue-500 focus:outline-none focus:underline hover:underline"
                   >
                     Sign up
@@ -147,7 +150,7 @@ const Login = () => {
       </div>
       <ToastContainer />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
