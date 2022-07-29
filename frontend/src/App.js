@@ -1,5 +1,11 @@
 import './App.css'
-import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom'
 import HomePage from './Components/HomePage/HomePage'
 import Login from './Components/Login/Login'
 import Signup from './Components/Login/Signup'
@@ -13,6 +19,7 @@ import { AuthContext } from './contextApi/AuthContext'
 import Chat from './Components/Chat/Chat'
 
 import axios from 'axios'
+import ForgotPassword from './Components/Login/ForgotPassword'
 
 function App() {
   const location = useLocation()
@@ -41,8 +48,8 @@ function App() {
   return (
     <div className="bg-white shadow dark:bg-gray-800">
       {location.pathname === '/login' ||
-        location.pathname === '/signup' ||
-        location.pathname === '/chat' || !login ? null : (
+      location.pathname === '/signup' ||
+      !login ? null : (
         <Header />
       )}
 
@@ -51,12 +58,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/chat" element={login ? <Chat /> : <Login />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
       {location.pathname === '/login' ||
-        location.pathname === '/signup' ||
-        location.pathname == '/chat' || !login ? null : (
+      location.pathname === '/signup' ||
+      location.pathname == '/chat' ||
+      !login ? null : (
         <Footer />
       )}
     </div>
