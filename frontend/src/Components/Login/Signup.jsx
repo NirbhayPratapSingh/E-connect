@@ -1,6 +1,43 @@
-import React from "react";
+import React, { useState } from 'react'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
+  const [form, setForm] = useState({})
+  const [isLogin, setIsLogin] = useState({})
+  const notify = (msg) => toast(msg)
+  const navigate = useNavigate()
+
+  const signupHandler = async (e) => {
+    e.preventDefault()
+
+    if (form.password !== form.confirmPassword) {
+      return notify(
+        'password && confirm password not matching please check again',
+      )
+    }
+
+    if (!form.email || !form.password || !form.username) {
+      return notify('please provide username  & password && email')
+    }
+    if (form.password.length < 6) {
+      return notify('password will be minimum 6 charcters')
+    }
+
+    try {
+      const data = await axios.post('http://localhost:8080/signup', form)
+
+      setIsLogin(data.data)
+      notify('login successfull')
+      navigate('/')
+    } catch (e) {
+      console.log(e)
+      notify(e.response.data.error)
+    }
+  }
+
   return (
     <div>
       <div className="bg-white dark:bg-gray-900">
@@ -9,7 +46,7 @@ const Signup = () => {
             className="hidden bg-cover lg:block lg:w-2/3"
             style={{
               backgroundImage:
-                "url(https://images.unsplash.com/photo-1588702547919-26089e690ecc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)",
+                'url(https://images.unsplash.com/photo-1588702547919-26089e690ecc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
             }}
           >
             <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
@@ -37,7 +74,7 @@ const Signup = () => {
               </div>
 
               <div className="mt-8">
-                <form>
+                <form onSubmit={(e) => signupHandler(e)}>
                   <div>
                     <label
                       htmlFor="email"
@@ -48,7 +85,10 @@ const Signup = () => {
                     <input
                       type="text"
                       name="username"
-                      id="email"
+                      id="username"
+                      onChange={(e) =>
+                        setForm({ ...form, [e.target.name]: e.target.value })
+                      }
                       placeholder="John123"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -64,6 +104,9 @@ const Signup = () => {
                       type="email"
                       name="email"
                       id="email"
+                      onChange={(e) =>
+                        setForm({ ...form, [e.target.name]: e.target.value })
+                      }
                       placeholder="example@example.com"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -83,6 +126,9 @@ const Signup = () => {
                       type="password"
                       name="password"
                       id="password"
+                      onChange={(e) =>
+                        setForm({ ...form, [e.target.name]: e.target.value })
+                      }
                       placeholder="Your Password"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -100,7 +146,10 @@ const Signup = () => {
                     <input
                       type="password"
                       name="confirmPassword"
-                      id="password"
+                      id="confirmpassword"
+                      onChange={(e) =>
+                        setForm({ ...form, [e.target.name]: e.target.value })
+                      }
                       placeholder="Confirm Your Password"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -114,13 +163,13 @@ const Signup = () => {
                 </form>
 
                 <p className="mt-6 text-sm text-center text-gray-400">
-                  Already have an account ?{" "}
-                  <a
-                    href="/"
+                  Already have an account ?{' '}
+                  <button
+                    onClick={() => navigate('/login')}
                     className="text-blue-500 focus:outline-none focus:underline hover:underline"
                   >
                     Sign in
-                  </a>
+                  </button>
                   .
                 </p>
               </div>
@@ -128,8 +177,9 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Signup
