@@ -19,8 +19,9 @@ let users = []
 let messages = {
   general: [],
   random: [],
-  jokes: [],
-  javascript: [],
+  DSA: [],
+  MEMES: [],
+  Coding: []
 }
 
 io.on('connection', (socket) => {
@@ -45,22 +46,26 @@ io.on('connection', (socket) => {
         content,
         chatName,
         sender,
-      }
-      socket.to(to).emit('new message', payload)
-    } else {
+        id: socket.id
+      };
+      socket.to(to).emit("new message", payload);
+    }
+    else {
       const payload = {
         content,
         chatName: sender,
         sender,
-      }
-      socket.to(to).emit('new message', payload)
+        id: socket.id
+      };
+      socket.to(to).emit("new message", payload);
     }
 
     if (messages[chatName]) {
       messages[chatName].push({
         sender,
         content,
-      })
+        id: socket.id
+      });
     }
   })
 
