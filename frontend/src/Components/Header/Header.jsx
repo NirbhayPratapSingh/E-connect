@@ -53,7 +53,7 @@ const Header = () => {
   useOutsideAlerter(wrapperRef);
 
   return (
-    <nav className="bg-white shadow dark:bg-gray-800 dark:border-b-2 border-gray-600">
+    <nav className="bg-white shadow dark:bg-gray-900 dark:border-b-2 border-gray-600">
       <div className="container px-6 py-3 mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center">
           <div className="flex items-center justify-between">
@@ -147,13 +147,13 @@ const Header = () => {
                   ref={wrapperRef}
                   className="flex items-center justify-center bg-gray-100"
                 >
-                  <div className="relative inline-block dark:bg-gray-800">
+                  <div className="relative inline-block dark:bg-gray-900">
                     <button
                       onClick={() => {
                         setIsOpen2(false);
                         setIsOpen(!isOpen);
                       }}
-                      className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
+                      className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-900 focus:outline-none"
                     >
                       <svg
                         className="w-5 h-5 text-gray-800 dark:text-white fill-current"
@@ -266,7 +266,7 @@ const Header = () => {
                       setIsOpen(false);
                       setIsOpen2(!isOpen2);
                     }}
-                    className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none"
+                    className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-900 focus:outline-none"
                   >
                     <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
                       <div className="w-full h-full relative bg-black text-white font-bold rounded-full flex justify-center items-center">

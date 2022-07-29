@@ -95,9 +95,11 @@ const Main = () => {
   };
 
   const connect = () => {
+    let username = login.username;
+
     setConnected(true);
     socketRef.current = io.connect("/");
-    socketRef.current.emit("join server", username);
+    socketRef.current.emit("join server", { username, allUsers });
     socketRef.current.emit("join room", "general", (messages) =>
       roomJoinCallback(messages, "general")
     );
@@ -128,7 +130,6 @@ const Main = () => {
 
   return (
     <div>
-      {/* {connected ? ( */}
       <>
         <Chat
           message={message}
@@ -141,12 +142,9 @@ const Main = () => {
           currentChat={currentChat}
           toggleChat={toggleChat}
           messages={messages[currentChat.chatName]}
-          username={username}
+          username={login.username}
         />
       </>
-      {/* ) : (
-        <Form username={username} onChange={handleChange} connect={connect} />
-      )} */}
     </div>
   );
 };

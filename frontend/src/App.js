@@ -49,7 +49,7 @@ function App() {
   }, [])
 
   return (
-    <div className="bg-white shadow dark:bg-gray-800">
+    <div className="bg-white shadow dark:bg-gray-900">
       {location.pathname === '/login' ||
       location.pathname === '/signup' ||
       !login ? null : (

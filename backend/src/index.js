@@ -6,13 +6,20 @@ const { Server } = require('socket.io')
 const cookieParser = require('cookie-parser')
 const Login = require('./Routes/Login')
 const Signup = require('./Routes/Signup')
+const session = require("express-session");
 require('dotenv').config()
 const app = express()
 const server = http.createServer(app)
 const io = new Server(server)
 const Authorization = require('./Routes/AuthMiddlewere/authMiddlewere')
 const Logout = require('./Routes/Logout')
+<<<<<<< HEAD
 const ForgotPassword = require('./Routes/ForgetPassword')
+=======
+const authRoute = require('./Routes/Auth')
+const passport = require('passport')
+const passportSetup = require("./Passport/Passport");
+>>>>>>> f41db8999284ad1aa012b9dde576116b3fccc141
 
 const port = process.env.PORT || 8080
 
@@ -26,14 +33,28 @@ let messages = {
 }
 
 io.on('connection', (socket) => {
-  socket.on('join server', (username) => {
+  socket.on('join server', (data) => {
     const user = {
-      username,
+      username: data.username,
       id: socket.id,
     }
 
-    users.push(user)
-    io.emit('new user', users)
+    let t = false;
+
+    users.filter(el => {
+      if (data.username === el.username) {
+        t = true;
+        return;
+      }
+    })
+
+    if (t) {
+      return;
+    } else {
+      users.push(user)
+      io.emit('new user', users)
+    }
+
   })
 
   socket.on('join room', (roomName, cb) => {
@@ -73,12 +94,26 @@ io.on('connection', (socket) => {
     users = users.filter((u) => u.id !== socket.id)
     io.emit('new user', users)
   })
+
 })
 
-app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser());
 
-app.use(express.json())
-app.use(cookieParser())
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    maxAge: 24 * 60 * 60 * 100,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(
   cors({
@@ -90,6 +125,7 @@ app.use(
 app.get('/', Authorization, (req, res) => {
   res.send('Welcome')
 })
+app.use("/auth", authRoute);
 app.use('/login', Login)
 app.use('/signup', Signup)
 app.use('/logout', Logout)

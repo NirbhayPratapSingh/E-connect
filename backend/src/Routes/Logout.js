@@ -3,7 +3,14 @@ const { Router } = require('express')
 const route = Router()
 
 route.post('/', (req, res) => {
-    console.log("ikkade")
+  if (req.logOut) {
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+    });
+  }
+  // console.log("ikkade")
   try {
     res.clearCookie('refreshToken')
     res.clearCookie('accessToken')
