@@ -7,18 +7,16 @@ import './App.css'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer.jsx/Footer'
 import ErrorPage from './Components/ErrorPage/ErrorPage'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { AuthContext, AuthProvider } from './contextApi/AuthContext'
 import Chat from './Components/Chat/Chat'
-import { useNavigate,Navigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 
 function App() {
   const location = useLocation()
   const { login } = useContext(AuthContext)
   const navigate = useNavigate()
-
-
 
   return (
     <div className="bg-white shadow dark:bg-gray-800">
@@ -29,10 +27,10 @@ function App() {
       )}
 
       <Routes>
-        <Route path="/" element={login ? <HomePage /> : navigate("/login")} />
-        <Route path="/login" element={ <Login /> } />
+        <Route path="/" element={login ? <HomePage /> : <Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/chat" element={login ? <Chat /> : navigate("/login")} />
+        <Route path="/chat" element={login ? <Chat /> : <Login />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
