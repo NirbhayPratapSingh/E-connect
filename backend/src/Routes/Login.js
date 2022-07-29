@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const userModel = require('../Models/User')
 const jwt = require('jsonwebtoken')
+const argon2 = require('argon2')
 
 const route = Router()
 
@@ -18,13 +19,17 @@ route.post('/', async (req, res) => {
       })
     }
 
-    const user = await userModel.findOne(req.body)
-
-    if (!user) {
-      return res.status(401).send({
-        error: 'please enter valid credentials',
-      })
+    const verifypass = await argon2.verify(exist.password, password)
+    if (!verifypass) {
+      return res.status(401).send({ error: 'please give valid credentials' })
     }
+    // const user = await userModel.findOne(req.body)
+
+    // if (!user) {
+    //   return res.status(401).send({
+    //     error: 'please enter valid credentials',
+    //   })
+    // }
 
     const refreshToken = jwt.sign({ username, email }, process.env.JWTSECRET, {
       expiresIn: '7d',
@@ -36,7 +41,7 @@ route.post('/', async (req, res) => {
     res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false })
     res.cookie('accessToken', accessToken, { httpOnly: true, secure: false })
 
-    res.send({ username: user.username, email: user.email })
+    res.send({ username, email })
   } catch (e) {
     res.status(500).send({ error: 'something wrong in login' })
   }
