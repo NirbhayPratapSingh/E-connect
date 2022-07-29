@@ -1,45 +1,49 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [form, setForm] = useState({})
-  const [isLogin, setIsLogin] = useState({})
-  const notify = (msg) => toast(msg)
-  const navigate = useNavigate()
+  const [form, setForm] = useState({});
+  const [isLogin, setIsLogin] = useState({});
+  const notify = (msg) => toast(msg);
+  const navigate = useNavigate();
 
   const signupHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (form.password !== form.confirmPassword) {
       return notify(
-        'password && confirm password not matching please check again',
-      )
+        "password && confirm password not matching please check again"
+      );
     }
 
     if (!form.email || !form.password || !form.username) {
-      return notify('please provide username  & password && email')
+      return notify("please provide username  & password && email");
     }
     if (form.password.length < 6) {
-      return notify('password will be minimum 6 charcters')
+      return notify("password will be minimum 6 charcters");
     }
 
     try {
-      const data = await axios.post('http://localhost:8080/signup', form, {
-        credentials: 'include',
-        withCredentials: true,
-      })
+      const data = await axios.post(
+        "https://e-connect-app.herokuapp.com/signup",
+        form,
+        {
+          credentials: "include",
+          withCredentials: true,
+        }
+      );
 
-      setIsLogin(data.data)
-      notify('login successfull')
-      navigate('/')
+      setIsLogin(data.data);
+      notify("login successfull");
+      navigate("/");
     } catch (e) {
-      console.log(e)
-      notify(e.response.data.error)
+      console.log(e);
+      notify(e.response.data.error);
     }
-  }
+  };
 
   return (
     <div>
@@ -49,7 +53,7 @@ const Signup = () => {
             className="hidden bg-cover lg:block lg:w-2/3"
             style={{
               backgroundImage:
-                'url(https://images.unsplash.com/photo-1588702547919-26089e690ecc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
+                "url(https://images.unsplash.com/photo-1588702547919-26089e690ecc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)",
             }}
           >
             <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
@@ -166,9 +170,9 @@ const Signup = () => {
                 </form>
 
                 <p className="mt-6 text-sm text-center text-gray-400">
-                  Already have an account ?{' '}
+                  Already have an account ?{" "}
                   <button
-                    onClick={() => navigate('/login')}
+                    onClick={() => navigate("/login")}
                     className="text-blue-500 focus:outline-none focus:underline hover:underline"
                   >
                     Sign in
@@ -182,7 +186,7 @@ const Signup = () => {
       </div>
       <ToastContainer />
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

@@ -119,7 +119,7 @@ app.use(
   }),
 )
 
-app.get('/', Authorization, (req, res) => {
+app.get('/', (req, res) => {
   res.send('Welcome')
 })
 app.use("/auth", authRoute);
@@ -139,5 +139,5 @@ server.listen(port, async (err, res) => {
   if (err) {
     return console.log('Something went wrong')
   }
-  console.log('Sever is live at http://localhost:8080')
+  console.log('Sever is live at https://e-connect-app.herokuapp.com')
 })

@@ -2,11 +2,11 @@ const { Router } = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 require('dotenv').config()
-const userModel = require('../Models/User')
+const userModel = require('../models/User')
 
 const authRoute = Router();
 
-const CLIENT_URL = "http://localhost:3000/";
+const CLIENT_URL = "https://e-connect-zeta.vercel.app/";
 
 authRoute.get("/login/success", async (req, res) => {
     let user = req.user;

@@ -1,24 +1,27 @@
-import axios from 'axios'
-import React, { useState } from 'react'
+import axios from "axios";
+import React, { useState } from "react";
 
 const ForgotPassword = (e) => {
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({});
 
   const handleForgot = async () => {
     if (!form) {
-      return alert('please enter email')
+      return alert("please enter email");
     }
     try {
-      const data = await axios.post('http://localhost:8080/forgotPassword', form)
+      const data = await axios.post(
+        "https://e-connect-app.herokuapp.com/forgotPassword",
+        form
+      );
       if (data.data) {
-        alert(data.data)
+        alert(data.data);
       }
-      console.log(data.data)
+      console.log(data.data);
     } catch (e) {
-      alert(e.message)
-      console.log(e.message)
+      alert(e.message);
+      console.log(e.message);
     }
-  }
+  };
 
   return (
     <div>
@@ -51,7 +54,7 @@ const ForgotPassword = (e) => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default ForgotPassword
+export default ForgotPassword;

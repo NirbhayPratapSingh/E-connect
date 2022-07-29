@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 const passport = require("passport");
-const userModel = require('../Models/User')
+const userModel = require('../models/User')
 const crypto = require('crypto');
 
 dotenv.config();

@@ -1,57 +1,56 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Forgot = () => {
-  const [form, setForm] = useState({})
-  const { id } = useParams()
-  const navigate = useNavigate()
+  const [form, setForm] = useState({});
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const handleVerify = async () => {
     try {
       const data = await axios.post(
-        `http://localhost:8080/forgotpassword/${id}`,
-      )
+        `https://e-connect-app.herokuapp.com/forgotpassword/${id}`
+      );
       if (!data.data) {
-        navigate('/signup')
+        navigate("/signup");
       }
-      console.log(data.data, 'kkf')
+      console.log(data.data, "kkf");
     } catch (e) {
-      console.log(e)
-      navigate('/signup')
+      console.log(e);
+      navigate("/signup");
     }
-  }
+  };
 
   const handleUpdate = async (e) => {
-    e.preventDefault()
-    alert('came')
+    e.preventDefault();
+    alert("came");
     if (form.password != form.confirmPassword) {
-      return alert('passwords not matched')
+      return alert("passwords not matched");
     }
 
     try {
       const data = await axios.post(
-        'http://localhost:8080/forgotpassword/reset',
+        "https://e-connect-app.herokuapp.com/forgotpassword/reset",
         {
           ...form,
           token: id,
-        },
-      )
+        }
+      );
 
       if (data.data) {
-        alert(data.data)
-        navigate('/login')
+        alert(data.data);
+        navigate("/login");
       }
-    
     } catch (e) {
-      console.log(e)
-      alert('something')
+      console.log(e);
+      alert("something");
     }
-  }
+  };
 
   useEffect(() => {
-    handleVerify()
-  }, [])
+    handleVerify();
+  }, []);
 
   return (
     <div class="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -103,7 +102,7 @@ const Forgot = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Forgot
+export default Forgot;

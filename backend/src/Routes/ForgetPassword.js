@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const userModel = require('../Models/User')
+const userModel = require('../models/User')
 const jwt = require('jsonwebtoken')
 const mail = require('../utils/nodeMailer')
 const argon2 = require('argon2')
