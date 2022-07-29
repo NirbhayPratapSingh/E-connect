@@ -16,10 +16,12 @@ import ErrorPage from './Components/ErrorPage/ErrorPage'
 import { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from './contextApi/AuthContext'
-import Chat from './Components/Chat/Chat'
 
 import axios from 'axios'
 import ForgotPassword from './Components/Login/ForgotPassword'
+import Main from './Components/Main/Main';
+import ProfilePage from './Components/ProfilePage/ProfilePage'
+import Chat from "./Components/MyChat/MyChat"
 
 function App() {
   const location = useLocation()
