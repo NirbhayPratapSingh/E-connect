@@ -19,9 +19,9 @@ import { AuthContext } from './contextApi/AuthContext'
 
 import axios from 'axios'
 import ForgotPassword from './Components/Login/ForgotPassword'
-import Main from './Components/Main/Main';
+import Main from './Components/Main/Main'
 import ProfilePage from './Components/ProfilePage/ProfilePage'
-import Chat from "./Components/MyChat/MyChat"
+import Chat from './Components/MyChat/MyChat'
 
 function App() {
   const location = useLocation()
@@ -59,8 +59,9 @@ function App() {
         <Route path="/" element={login ? <HomePage /> : <Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/chat" element={login ? <Chat /> : <Login />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/chat" element={login ? <Main /> : <Login />} />
+        <Route path="/profile" element={login ? <ProfilePage /> : <Login />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
