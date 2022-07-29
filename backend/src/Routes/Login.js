@@ -31,12 +31,20 @@ route.post('/', async (req, res) => {
     //   })
     // }
 
-    const refreshToken = jwt.sign({ username, email }, process.env.JWTSECRET, {
-      expiresIn: '7d',
-    })
-    const accessToken = jwt.sign({ username, email }, process.env.JWTSECRET, {
-      expiresIn: '15m',
-    })
+    const refreshToken = jwt.sign(
+      { username: exist.username, email },
+      process.env.JWTSECRET,
+      {
+        expiresIn: '7d',
+      },
+    )
+    const accessToken = jwt.sign(
+      { username: exist.username, email },
+      process.env.JWTSECRET,
+      {
+        expiresIn: '15m',
+      },
+    )
 
     res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false })
     res.cookie('accessToken', accessToken, { httpOnly: true, secure: false })
@@ -45,6 +53,47 @@ route.post('/', async (req, res) => {
   } catch (e) {
     res.status(500).send({ error: 'something wrong in login' })
   }
+})
+
+route.get('/', (req, res) => {
+  const accessToken = req.cookies.accessToken
+  const refreshToken = req.cookies.refreshToken
+
+  if (!accessToken || !refreshToken) {
+    return res.status(401).send({ error: 'authorization failed' })
+  }
+
+  const verify = jwt.verify(
+    accessToken,
+    process.env.JWTSECRET,
+    (err, decoded) => {
+      if (err) {
+        const ref = jwt.verify(
+          refreshToken,
+          process.env.JWTSECRET,
+          (err, decoded) => {
+            if (err) {
+              return res.status(401).status({ error: 'Authorization failed' })
+            }
+            const { username, email } = decoded
+            const newAccessToken = jwt.sign(
+              { username, email },
+              process.env.JWTSECRET,
+              { expiresIn: '15min' },
+            )
+
+            res.cookie('accessToken', newAccessToken)
+            return res.status(200).send({ username, email })
+            //   next()
+          },
+        )
+      }
+      console.log('iam coming man', decoded)
+      const { username, email } = decoded
+      // res.status(200).send({ username, email })
+      res.status(200).send({ username, email })
+    },
+  )
 })
 
 module.exports = route
