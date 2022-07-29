@@ -12,6 +12,7 @@ const server = http.createServer(app)
 const io = new Server(server)
 const Authorization = require('./Routes/AuthMiddlewere/authMiddlewere')
 const Logout = require('./Routes/Logout')
+const ForgotPassword = require('./Routes/ForgetPassword')
 
 const port = process.env.PORT || 8080
 
@@ -21,7 +22,7 @@ let messages = {
   random: [],
   DSA: [],
   MEMES: [],
-  Coding: []
+  Coding: [],
 }
 
 io.on('connection', (socket) => {
@@ -46,26 +47,25 @@ io.on('connection', (socket) => {
         content,
         chatName,
         sender,
-        id: socket.id
-      };
-      socket.to(to).emit("new message", payload);
-    }
-    else {
+        id: socket.id,
+      }
+      socket.to(to).emit('new message', payload)
+    } else {
       const payload = {
         content,
         chatName: sender,
         sender,
-        id: socket.id
-      };
-      socket.to(to).emit("new message", payload);
+        id: socket.id,
+      }
+      socket.to(to).emit('new message', payload)
     }
 
     if (messages[chatName]) {
       messages[chatName].push({
         sender,
         content,
-        id: socket.id
-      });
+        id: socket.id,
+      })
     }
   })
 
@@ -93,6 +93,7 @@ app.get('/', Authorization, (req, res) => {
 app.use('/login', Login)
 app.use('/signup', Signup)
 app.use('/logout', Logout)
+app.use('/forgotpassword', ForgotPassword)
 
 server.listen(port, async (err, res) => {
   try {

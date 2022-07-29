@@ -54,7 +54,6 @@ const MyChat = (props) => {
     }
   };
 
-  console.log(props.allUsers);
 
   return (
     <div className="w-full flex h-[55vh] text-white justify-center">
