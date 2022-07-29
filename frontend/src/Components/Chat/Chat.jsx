@@ -13,7 +13,11 @@ const Chat = (props) => {
 
     return (
       // Row
-      <div onClick={() => props.toggleChat(currentChat)} key={room}>
+      <div
+        className="mt-2 cursor-pointer px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2"
+        onClick={() => props.toggleChat(currentChat)}
+        key={room}
+      >
         {room}
       </div>
     );
@@ -24,7 +28,7 @@ const Chat = (props) => {
       return (
         // Row
         <div
-          className="hover:bg-gray-900 hover:text-gray-100 md:mx-2"
+          className="mt-2 cursor-pointer px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2"
           key={user.id}
         >
           You: {user.username}
@@ -39,7 +43,11 @@ const Chat = (props) => {
 
     return (
       // Row
-      <div onClick={() => props.toggleChat(currentChat)} key={user.id}>
+      <div
+        className="mt-2 cursor-pointer px-2 py-1 text-sm font-medium text-gray-700 transition-colors duration-200 transform rounded dark:text-gray-200 hover:bg-gray-900 hover:text-gray-100 md:mx-2"
+        onClick={() => props.toggleChat(currentChat)}
+        key={user.id}
+      >
         {user.username}
       </div>
     );
@@ -60,16 +68,14 @@ const Chat = (props) => {
     }
   };
 
-  console.log(props.allUsers);
-
   return (
-    <div className="flex flex-row max-w-[50%] m-auto">
-      <div className="p-5">
+    <div className="flex flex-row lg:max-w-[50%] m-auto">
+      <div className="p-5 border-r-2 border-r-gray-600">
         <h3 className="text-gray-700 uppercase dark:text-white text-xl">
           Channels
         </h3>
         {rooms.map(renderRooms)}
-        <h3 className="text-gray-700 uppercase dark:text-white text-xl">
+        <h3 className="mt-2 text-gray-700 uppercase dark:text-white text-xl">
           All Users
         </h3>
         {props.allUsers.map(renderUser)}
@@ -84,7 +90,7 @@ const Chat = (props) => {
                   <circle cx="4" cy="4" r="4" fill="currentColor"></circle>
                 </svg>
               </span>
-              <div className="text-black dark:text-gray-300 text-5xl">
+              <div className="text-black dark:text-gray-300 text-5xl  w-14 h-14 rounded-full order-2 bg-black flex justify-center item-center">
                 {props.currentChat.chatName[0].toUpperCase()}
               </div>
             </div>
@@ -120,13 +126,9 @@ const Chat = (props) => {
                             </span>
                           </div>
                         </div>
-                        <img
-                          src={
-                            "https://images.unsplash.com/photo-1590031905470-a1a1feacbb0b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                          }
-                          alt="My profile"
-                          className="w-6 h-6 rounded-full order-2"
-                        />
+                        <div className="text-black dark:text-gray-200 w-6 h-6 rounded-full order-2 bg-black flex justify-center item-center">
+                          {message.sender[0].toUpperCase()}
+                        </div>
                       </div>
                     </div>
                   );

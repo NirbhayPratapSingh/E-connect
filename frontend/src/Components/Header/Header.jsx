@@ -1,56 +1,56 @@
-import axios from 'axios'
-import React, { useRef, useEffect, useState, useContext } from 'react'
-import { AuthContext } from '../../contextApi/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import axios from "axios";
+import React, { useRef, useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../contextApi/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Hook that alerts clicks outside of the passed ref
  */
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isOpen2, setIsOpen2] = useState(false)
-  const [isMenu, setIsMenu] = useState(false)
-  const Navigate = useNavigate()
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [isMenu, setIsMenu] = useState(false);
+  const Navigate = useNavigate();
 
-  const { login } = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
       const data = await axios.post(
-        'http://localhost:8080/logout',
+        "http://localhost:8080/logout",
         {},
         {
-          credentials: 'include',
+          credentials: "include",
           withCredentials: true,
-        },
-      )
-      console.log(data.data, 'logout')
-      Navigate('/login')
+        }
+      );
+      console.log(data.data, "logout");
+      Navigate("/login");
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
-  }
+  };
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setIsOpen(false)
-          setIsOpen2(false)
+          setIsOpen(false);
+          setIsOpen2(false);
         }
       }
       // Bind the event listener
-      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener("mousedown", handleClickOutside);
       return () => {
         // Unbind the event listener on clean up
-        document.removeEventListener('mousedown', handleClickOutside)
-      }
-    }, [ref])
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
   }
 
-  const wrapperRef = useRef(null)
-  useOutsideAlerter(wrapperRef)
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
 
   return (
     <nav className="bg-white shadow dark:bg-gray-800 dark:border-b-2 border-gray-600">
@@ -112,7 +112,7 @@ const Header = () => {
           <div className="items-center md:flex">
             <div
               className={`flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1 ${
-                !isMenu && 'hidden'
+                !isMenu && "hidden"
               }`}
             >
               <a
@@ -150,8 +150,8 @@ const Header = () => {
                   <div className="relative inline-block dark:bg-gray-800">
                     <button
                       onClick={() => {
-                        setIsOpen2(false)
-                        setIsOpen(!isOpen)
+                        setIsOpen2(false);
+                        setIsOpen(!isOpen);
                       }}
                       className="relative z-10 block p-2 text-gray-700 bg-white border border-transparent rounded-md dark:text-white focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:bg-gray-800 focus:outline-none"
                     >
@@ -167,7 +167,7 @@ const Header = () => {
                     <div
                       className="absolute invisible right-0 z-20 mt-2 overflow-hidden bg-white rounded-md shadow-lg w-80 dark:bg-gray-800 transition-opacity ease-in border dark:border-gray-600"
                       style={{
-                        visibility: isOpen && 'visible',
+                        visibility: isOpen && "visible",
                         opacity: isOpen ? 1 : 0,
                       }}
                     >
@@ -184,11 +184,11 @@ const Header = () => {
                           <p className="mx-2 text-sm text-gray-600 dark:text-white">
                             <span className="font-bold" href="/">
                               Sara Salah
-                            </span>{' '}
-                            replied on the{' '}
+                            </span>{" "}
+                            replied on the{" "}
                             <span className="font-bold text-blue-500" href="/">
                               Upload Image
-                            </span>{' '}
+                            </span>{" "}
                             artical . 2m
                           </p>
                         </a>
@@ -204,7 +204,7 @@ const Header = () => {
                           <p className="mx-2 text-sm text-gray-600 dark:text-white">
                             <span className="font-bold" href="/">
                               Slick Net
-                            </span>{' '}
+                            </span>{" "}
                             start following you . 45m
                           </p>
                         </a>
@@ -220,11 +220,11 @@ const Header = () => {
                           <p className="mx-2 text-sm text-gray-600 dark:text-white">
                             <span className="font-bold" href="/">
                               Jane Doe
-                            </span>{' '}
-                            Like Your reply on{' '}
+                            </span>{" "}
+                            Like Your reply on{" "}
                             <span className="font-bold text-blue-500" href="/">
                               Test with TDD
-                            </span>{' '}
+                            </span>{" "}
                             artical . 1h
                           </p>
                         </a>
@@ -240,7 +240,7 @@ const Header = () => {
                           <p className="mx-2 text-sm text-gray-600 dark:text-white">
                             <span className="font-bold" href="/">
                               Abigail Bennett
-                            </span>{' '}
+                            </span>{" "}
                             start following you . 3h
                           </p>
                         </a>
@@ -263,8 +263,8 @@ const Header = () => {
                   <button
                     data-dropdown-toggle="dropdown"
                     onClick={() => {
-                      setIsOpen(false)
-                      setIsOpen2(!isOpen2)
+                      setIsOpen(false);
+                      setIsOpen2(!isOpen2);
                     }}
                     className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none"
                   >
@@ -292,7 +292,7 @@ const Header = () => {
                     id="dropdown"
                     className="absolute invisible right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800 transition-opacity ease-in border dark:border-gray-600"
                     style={{
-                      visibility: isOpen2 && 'visible',
+                      visibility: isOpen2 && "visible",
                       opacity: isOpen2 ? 1 : 0,
                     }}
                   >
@@ -339,7 +339,7 @@ const Header = () => {
                     </a>
 
                     <a
-                      href="/"
+                      href="/profile"
                       className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                     >
                       <svg
@@ -588,7 +588,7 @@ const Header = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

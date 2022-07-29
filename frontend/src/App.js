@@ -13,6 +13,7 @@ import { AuthContext } from './contextApi/AuthContext'
 
 import axios from 'axios'
 import Main from './Components/Main/Main';
+import ProfilePage from './Components/ProfilePage/ProfilePage'
 
 function App() {
   const location = useLocation()
@@ -42,7 +43,7 @@ function App() {
     <div className="bg-white shadow dark:bg-gray-800">
       {location.pathname === '/login' ||
         location.pathname === '/signup'
-        // || location.pathname === '/chat' || !login 
+        || !login
         ?
         null : (
           <Header />
@@ -53,13 +54,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/chat" element={true ? <Main /> : <Login />} />
+        <Route path="/profile" element={true ? <ProfilePage /> : <Login />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
       {location.pathname === '/login' ||
         location.pathname === '/signup'
-        // ||
-        // location.pathname == '/chat' || !login 
+        || !login
         ?
         null : (
           <Footer />
