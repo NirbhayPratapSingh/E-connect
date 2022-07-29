@@ -51,6 +51,7 @@ route.post('/', async (req, res) => {
 
     res.send({ username: exist.username, email })
   } catch (e) {
+    console.log('e:', e)
     res.status(500).send({ error: 'something wrong in login' })
   }
 })

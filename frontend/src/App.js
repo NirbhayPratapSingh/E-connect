@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import HomePage from './Components/HomePage/HomePage'
 import Login from './Components/Login/Login'
 import Signup from './Components/Login/Signup'
@@ -9,7 +9,7 @@ import Footer from './Components/Footer.jsx/Footer'
 import ErrorPage from './Components/ErrorPage/ErrorPage'
 import { useEffect, useState } from 'react'
 import { useContext } from 'react'
-import { AuthContext, AuthProvider } from './contextApi/AuthContext'
+import { AuthContext } from './contextApi/AuthContext'
 import Chat from './Components/Chat/Chat'
 import { useNavigate, Navigate } from 'react-router-dom'
 import axios from 'axios'
@@ -41,8 +41,8 @@ function App() {
   return (
     <div className="bg-white shadow dark:bg-gray-800">
       {location.pathname === '/login' ||
-      location.pathname === '/signup' ||
-      location.pathname === '/chat' ? null : (
+        location.pathname === '/signup' ||
+        location.pathname === '/chat' || !login ? null : (
         <Header />
       )}
 
@@ -55,8 +55,8 @@ function App() {
       </Routes>
 
       {location.pathname === '/login' ||
-      location.pathname === '/signup' ||
-      location.pathname == '/chat' ? null : (
+        location.pathname === '/signup' ||
+        location.pathname == '/chat' || !login ? null : (
         <Footer />
       )}
     </div>
