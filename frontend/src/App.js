@@ -22,6 +22,7 @@ import ForgotPassword from './Components/Login/ForgotPassword'
 import Main from './Components/Main/Main'
 import ProfilePage from './Components/ProfilePage/ProfilePage'
 import Chat from './Components/MyChat/MyChat'
+import Forgot from './Components/Login/Forgot'
 
 function App() {
   const location = useLocation()
@@ -60,6 +61,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/forgotpassword/:id" element={<Forgot />} />
         <Route path="/chat" element={login ? <Main /> : <Login />} />
         <Route path="/profile" element={login ? <ProfilePage /> : <Login />} />
         <Route path="*" element={<ErrorPage />} />
