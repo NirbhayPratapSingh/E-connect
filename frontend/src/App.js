@@ -27,7 +27,7 @@ function App() {
         credentials: 'include',
       })
 
-      console.log(data.data, 'useeffce')
+      // console.log(data.data, 'useeffce')
       setLogin(data.data)
     } catch (e) {
       console.log(e)
@@ -40,7 +40,7 @@ function App() {
   }, [])
 
   return (
-    <div className="bg-white shadow dark:bg-gray-800">
+    <div className="bg-white shadow dark:bg-gray-900">
       {location.pathname === '/login' ||
         location.pathname === '/signup'
         || !login
