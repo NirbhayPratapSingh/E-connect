@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const userModel = require('../Models/User')
 const jwt = require('jsonwebtoken')
+const argon2 = require('argon2')
 
 const Signup = Router()
 
@@ -9,14 +10,18 @@ Signup.post('/', async (req, res) => {
   if (!username || !password || !email) {
     return res.status(401).send({ error: 'please provide all fields' })
   }
+  if (password.length < 6) {
+    return res.status(406).send({ error: 'please provide 6 digits password ' })
+  }
 
   try {
+    const hash = await argon2.hash(password)
     const exist = userModel.find(req.body)
     if (exist.length > 0) {
       return res.status(406).send({ error: 'user already registered' })
     }
 
-    const user = new userModel(req.body)
+    const user = new userModel({ username, email, password: hash })
 
     user.save().then(() => {
       const refreshToken = jwt.sign(
@@ -27,10 +32,10 @@ Signup.post('/', async (req, res) => {
       const accessToken = jwt.sign({ username, email }, process.env.JWTSECRET, {
         expiresIn: '15m',
       })
-      
+
       res.cookie('refreshToken', refreshToken)
       res.cookie('accessToken', accessToken)
-      
+
       return res.status(201).send({ username, email })
     })
 
