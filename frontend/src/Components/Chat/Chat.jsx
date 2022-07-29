@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Chat.module.css";
 
 const rooms = ["general", "random", "DSA", "MEMES", "Coding"];
@@ -23,8 +23,8 @@ const Chat = (props) => {
     );
   };
 
-  const renderUser = (user) => {
-    if (user.id === props.yourId) {
+  const renderUser = (user, index) => {
+    if (user.username === props.username) {
       return (
         // Row
         <div
@@ -53,21 +53,13 @@ const Chat = (props) => {
     );
   };
 
-  const renderMessages = (message, index) => {
-    return (
-      <div key={index}>
-        <h3>{message.sender}</h3>
-        <p>{message.content}</p>
-      </div>
-    );
-  };
-
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       props.sendMessage();
     }
   };
 
+  console.log(props.messages);
   return (
     <div className="flex flex-row lg:max-w-[50%] m-auto items-start">
       <div className="p-5 border-r-2 border-r-gray-600 min-h-screen">

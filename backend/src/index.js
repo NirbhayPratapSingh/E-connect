@@ -25,14 +25,28 @@ let messages = {
 }
 
 io.on('connection', (socket) => {
-  socket.on('join server', (username) => {
+  socket.on('join server', (data) => {
     const user = {
-      username,
+      username: data.username,
       id: socket.id,
     }
 
-    users.push(user)
-    io.emit('new user', users)
+    let t = false;
+
+    users.filter(el => {
+      if (data.username === el.username) {
+        t = true;
+        return;
+      }
+    })
+
+    if (t) {
+      return;
+    } else {
+      users.push(user)
+      io.emit('new user', users)
+    }
+
   })
 
   socket.on('join room', (roomName, cb) => {
