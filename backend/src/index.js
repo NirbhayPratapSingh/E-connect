@@ -13,13 +13,10 @@ const server = http.createServer(app)
 const io = new Server(server)
 const Authorization = require('./Routes/AuthMiddlewere/authMiddlewere')
 const Logout = require('./Routes/Logout')
-<<<<<<< HEAD
 const ForgotPassword = require('./Routes/ForgetPassword')
-=======
 const authRoute = require('./Routes/Auth')
 const passport = require('passport')
 const passportSetup = require("./Passport/Passport");
->>>>>>> f41db8999284ad1aa012b9dde576116b3fccc141
 
 const port = process.env.PORT || 8080
 
@@ -117,7 +114,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://e-connect-zeta.vercel.app'],
     credentials: true,
   }),
 )

@@ -51,8 +51,8 @@ function App() {
   return (
     <div className="bg-white shadow dark:bg-gray-900">
       {location.pathname === '/login' ||
-      location.pathname === '/signup' ||
-      !login ? null : (
+        location.pathname === '/signup' ||
+        !login ? null : (
         <Header />
       )}
 
@@ -68,9 +68,9 @@ function App() {
       </Routes>
 
       {location.pathname === '/login' ||
-      location.pathname === '/signup' ||
-      location.pathname == '/chat' ||
-      !login ? null : (
+        location.pathname === '/signup' ||
+        location.pathname == '/chat' ||
+        !login ? null : (
         <Footer />
       )}
     </div>
