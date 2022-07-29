@@ -1,6 +1,41 @@
-import React from "react";
+import React, { useState } from 'react'
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../contextApi/AuthContext'
 
 const Login = () => {
+  const [form, setForm] = useState({})
+  const [isLogin, setIsLogin] = useState({})
+  const notify = (msg) => toast(msg)
+  const navigate = useNavigate()
+
+  const { login, setLogin } = useContext(AuthContext)
+  // console.log(login, setLogin)
+
+  const loginHandler = async (e) => {
+    e.preventDefault()
+    if (!form.email || !form.password) {
+      return notify('please provide username  & password')
+    }
+    if (form.password.length < 6) {
+      return notify('password will be minimum 6 charcters')
+    }
+
+    try {
+      const data = await axios.post('http://localhost:8080/login', form)
+
+      setLogin(data.data)
+      notify('login successfull')
+      navigate('/')
+    } catch (e) {
+      console.log(e)
+      notify(e.response.data.error)
+    }
+  }
+
   return (
     <div>
       <div className="bg-white dark:bg-gray-900">
@@ -9,7 +44,7 @@ const Login = () => {
             className="hidden bg-cover lg:block lg:w-2/3"
             style={{
               backgroundImage:
-                "url(https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)",
+                'url(https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)',
             }}
           >
             <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
@@ -37,10 +72,10 @@ const Login = () => {
               </div>
 
               <div className="mt-8">
-                <form>
+                <form onSubmit={loginHandler}>
                   <div>
                     <label
-                      for="email"
+                      htmlFor="email"
                       className="block mb-2 text-sm text-gray-600 dark:text-gray-200"
                     >
                       Email Address
@@ -49,6 +84,12 @@ const Login = () => {
                       type="email"
                       name="email"
                       id="email"
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
                       placeholder="example@example.com"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -57,7 +98,7 @@ const Login = () => {
                   <div className="mt-6">
                     <div className="flex justify-between mb-2">
                       <label
-                        for="password"
+                        htmlFor="password"
                         className="text-sm text-gray-600 dark:text-gray-200"
                       >
                         Password
@@ -74,6 +115,9 @@ const Login = () => {
                       type="password"
                       name="password"
                       id="password"
+                      onChange={(e) =>
+                        setForm({ ...form, [e.target.name]: e.target.value })
+                      }
                       placeholder="Your Password"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
@@ -87,13 +131,13 @@ const Login = () => {
                 </form>
 
                 <p className="mt-6 text-sm text-center text-gray-400">
-                  Don&#x27;t have an account yet?{" "}
-                  <a
-                    href="/"
+                  Don&#x27;t have an account yet?{' '}
+                  <button
+                    onClick={() => navigate('/signup')}
                     className="text-blue-500 focus:outline-none focus:underline hover:underline"
                   >
                     Sign up
-                  </a>
+                  </button>
                   .
                 </p>
               </div>
@@ -101,8 +145,9 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
