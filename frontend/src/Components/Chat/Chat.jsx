@@ -69,8 +69,8 @@ const Chat = (props) => {
   };
 
   return (
-    <div className="flex flex-row lg:max-w-[50%] m-auto">
-      <div className="p-5 border-r-2 border-r-gray-600">
+    <div className="flex flex-row lg:max-w-[50%] m-auto items-start">
+      <div className="p-5 border-r-2 border-r-gray-600 min-h-screen">
         <h3 className="text-gray-700 uppercase dark:text-white text-xl">
           Channels
         </h3>
@@ -85,7 +85,7 @@ const Chat = (props) => {
         <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
           <div className="relative flex items-center space-x-4">
             <div className="relative">
-              <span className="absolute text-green-500 right-[-15px] bottom-[15px]">
+              <span className="absolute text-green-500 right-[-8px] bottom-[-10px]">
                 <svg width="20" height="20">
                   <circle cx="4" cy="4" r="4" fill="currentColor"></circle>
                 </svg>
@@ -101,7 +101,7 @@ const Chat = (props) => {
                 </span>
               </div>
               <span className="text-lg text-gray-600 dark:text-gray-400">
-                Junior Developer
+                Hello there I am using E-connect.
               </span>
             </div>
           </div>
@@ -117,7 +117,7 @@ const Chat = (props) => {
               {props.messages.map((message, index) => {
                 if (message.sender === props.username) {
                   return (
-                    <div className="chat-message">
+                    <div key={index} className="chat-message">
                       <div className="flex items-end justify-end">
                         <div className="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
                           <div>
@@ -144,13 +144,9 @@ const Chat = (props) => {
                           </span>
                         </div>
                       </div>
-                      <img
-                        src={
-                          "https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
-                        }
-                        alt="My profile"
-                        className="w-6 h-6 rounded-full order-1"
-                      />
+                      <div className="text-black dark:text-gray-200 w-6 h-6 rounded-full order-2 bg-black flex justify-center item-center">
+                        {message.sender[0].toUpperCase()}
+                      </div>
                     </div>
                   </div>
                 );
@@ -199,6 +195,7 @@ const Chat = (props) => {
             />
             <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">
               <button
+                onClick={() => props.sendMessage()}
                 type="button"
                 className="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
               >

@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import io from "socket.io-client";
 import immer from "immer";
 import MyChat from "../MyChat/MyChat";
 import Form from "../Form/Form";
 import Chat from "../Chat/Chat";
+import { AuthContext } from "../../contextApi/AuthContext";
 
 const initialMessageState = {
   general: [],
@@ -14,6 +15,7 @@ const initialMessageState = {
 };
 
 const Main = () => {
+  const { login } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [connected, setConnected] = useState(false);
   const [currentChat, setCurrentChat] = useState({
@@ -116,27 +118,35 @@ const Main = () => {
     });
   };
 
+  useEffect(() => {
+    if (login.username) {
+      setUsername(login.username);
+      connect();
+    }
+    return;
+  }, [login]);
+
   return (
     <div>
-      {connected ? (
-        <>
-          <Chat
-            message={message}
-            handleMessageChange={handleMessageChange}
-            sendMessage={sendMessage}
-            yourId={socketRef.current ? socketRef.current.id : ""}
-            allUsers={allUsers}
-            joinRoom={joinRoom}
-            connectedRooms={connectedRooms}
-            currentChat={currentChat}
-            toggleChat={toggleChat}
-            messages={messages[currentChat.chatName]}
-            username={username}
-          />
-        </>
-      ) : (
+      {/* {connected ? ( */}
+      <>
+        <Chat
+          message={message}
+          handleMessageChange={handleMessageChange}
+          sendMessage={sendMessage}
+          yourId={socketRef.current ? socketRef.current.id : ""}
+          allUsers={allUsers}
+          joinRoom={joinRoom}
+          connectedRooms={connectedRooms}
+          currentChat={currentChat}
+          toggleChat={toggleChat}
+          messages={messages[currentChat.chatName]}
+          username={username}
+        />
+      </>
+      {/* ) : (
         <Form username={username} onChange={handleChange} connect={connect} />
-      )}
+      )} */}
     </div>
   );
 };

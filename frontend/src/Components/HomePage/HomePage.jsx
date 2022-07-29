@@ -9,11 +9,17 @@ const HomePage = () => {
             <h1 className="text-2xl font-semibold text-gray-800 uppercase dark:text-white lg:text-3xl">
               Best Place To Find Your Learning Partner
             </h1>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
+            <p className="mt-2 mb-5 text-gray-600 dark:text-gray-400">
               learning with others is a manner of group learning that enhances
               communication skills, cultural awareness, thinking skills and so
               much more.
             </p>
+            <a
+              href="/chat"
+              className="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+            >
+              Chat Now
+            </a>
           </div>
         </div>
 
