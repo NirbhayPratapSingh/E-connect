@@ -53,8 +53,8 @@ function App() {
         <Route path="/" element={login ? <HomePage /> : <Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/chat" element={true ? <Main /> : <Login />} />
-        <Route path="/profile" element={true ? <ProfilePage /> : <Login />} />
+        <Route path="/chat" element={login ? <Main /> : <Login />} />
+        <Route path="/profile" element={login ? <ProfilePage /> : <Login />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
