@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { AuthContext } from './contextApi/AuthContext'
 import Chat from './Components/Chat/Chat'
-import { useNavigate, Navigate } from 'react-router-dom'
+
 import axios from 'axios'
 
 function App() {
