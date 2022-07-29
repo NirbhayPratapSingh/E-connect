@@ -23,13 +23,7 @@ route.post('/', async (req, res) => {
     if (!verifypass) {
       return res.status(401).send({ error: 'please give valid credentials' })
     }
-    // const user = await userModel.findOne(req.body)
 
-    // if (!user) {
-    //   return res.status(401).send({
-    //     error: 'please enter valid credentials',
-    //   })
-    // }
 
     const refreshToken = jwt.sign(
       { username: exist.username, email },
@@ -59,6 +53,7 @@ route.post('/', async (req, res) => {
 route.get('/', (req, res) => {
   const accessToken = req.cookies.accessToken
   const refreshToken = req.cookies.refreshToken
+  const googleToken = req.cookies["connect.sid"]
 
   if (!accessToken || !refreshToken) {
     return res.status(401).send({ error: 'authorization failed' })

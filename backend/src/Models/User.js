@@ -14,6 +14,10 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
         minLength: 6
+    },
+    googleId: {
+        type: String,
+        required: false,
     }
 })
 

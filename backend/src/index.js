@@ -6,12 +6,16 @@ const { Server } = require('socket.io')
 const cookieParser = require('cookie-parser')
 const Login = require('./Routes/Login')
 const Signup = require('./Routes/Signup')
+const session = require("express-session");
 require('dotenv').config()
 const app = express()
 const server = http.createServer(app)
 const io = new Server(server)
 const Authorization = require('./Routes/AuthMiddlewere/authMiddlewere')
 const Logout = require('./Routes/Logout')
+const authRoute = require('./Routes/Auth')
+const passport = require('passport')
+const passportSetup = require("./Passport/Passport");
 
 const port = process.env.PORT || 8080
 
@@ -87,12 +91,26 @@ io.on('connection', (socket) => {
     users = users.filter((u) => u.id !== socket.id)
     io.emit('new user', users)
   })
+
 })
 
-app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser());
 
-app.use(express.json())
-app.use(cookieParser())
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    maxAge: 24 * 60 * 60 * 100,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(
   cors({
@@ -104,6 +122,7 @@ app.use(
 app.get('/', Authorization, (req, res) => {
   res.send('Welcome')
 })
+app.use("/auth", authRoute);
 app.use('/login', Login)
 app.use('/signup', Signup)
 app.use('/logout', Logout)
