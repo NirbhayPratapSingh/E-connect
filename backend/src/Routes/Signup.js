@@ -33,8 +33,8 @@ Signup.post('/', async (req, res) => {
         expiresIn: '15m',
       })
 
-      res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, domain: "https://e-connect-zeta.vercel.app" })
-      res.cookie('accessToken', accessToken, { httpOnly: true, secure: true, domain: "https://e-connect-zeta.vercel.app" })
+      res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true })
+      res.cookie('accessToken', accessToken, { httpOnly: true, secure: true })
 
       return res.status(201).send({ username, email })
     })

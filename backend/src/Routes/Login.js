@@ -40,8 +40,8 @@ route.post('/', async (req, res) => {
       },
     )
 
-    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true, domain: "https://e-connect-zeta.vercel.app" })
-    res.cookie('accessToken', accessToken, { httpOnly: true, secure: true, domain: "https://e-connect-zeta.vercel.app" })
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true })
+    res.cookie('accessToken', accessToken, { httpOnly: true, secure: true })
 
     res.send({ username: exist.username, email })
   } catch (e) {
