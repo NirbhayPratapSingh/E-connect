@@ -114,7 +114,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://e-connect-zeta.vercel.app'],
+    origin: ['http://localhost:3000', 'https://e-connect-zeta.vercel.app', 'https://e-connect-app.herokuapp.com'],
     credentials: true,
   }),
 )
