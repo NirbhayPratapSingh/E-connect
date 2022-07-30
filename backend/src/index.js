@@ -112,6 +112,7 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 app.use(
   cors({
     origin: ['http://localhost:3000', 'https://e-connect-zeta.vercel.app', 'https://e-connect-app.herokuapp.com'],
