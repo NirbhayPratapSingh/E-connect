@@ -6,7 +6,7 @@ const userModel = require('../models/User')
 
 const authRoute = Router();
 
-const CLIENT_URL = "http://localhost:3000/";
+const CLIENT_URL = "https://e-connect-zeta.vercel.app/";
 
 authRoute.get("/login/success", async (req, res) => {
     let user = req.user;
