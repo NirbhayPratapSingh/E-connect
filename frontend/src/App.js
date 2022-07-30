@@ -31,10 +31,12 @@ function App() {
 
   const handleLogin = async () => {
     try {
-      const data = await axios.get('https://e-connect-app.herokuapp.com/login', {
-        withCredentials: true,
-        credentials: 'include',
-      })
+      const data = await axios.get('https://e-connect-app.herokuapp.com/login', 
+      // {
+      //   withCredentials: true,
+      //   credentials: 'include',
+      // }
+      )
 
       // console.log(data.data, 'useeffce')
       setLogin(data.data)
