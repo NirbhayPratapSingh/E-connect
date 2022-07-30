@@ -29,8 +29,6 @@ route.post('/', async (req, res) => {
       { username: exist.username, email },
       process.env.JWTSECRET,
       {
-        secure: env.ENVIRONMENT === 'LIVE',
-        sameSite: env.ENVIRONMENT === 'LIVE' ? 'none' : 'lax',
         expiresIn: '7d',
       },
     )
@@ -38,8 +36,6 @@ route.post('/', async (req, res) => {
       { username: exist.username, email },
       process.env.JWTSECRET,
       {
-        secure: env.ENVIRONMENT === 'LIVE',
-        sameSite: env.ENVIRONMENT === 'LIVE' ? 'none' : 'lax',
         expiresIn: '15m',
       },
     )
