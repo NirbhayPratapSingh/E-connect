@@ -29,10 +29,10 @@ const Login = () => {
       const data = await axios.post(
         "https://e-connect-app.herokuapp.com/login",
         form,
-        // {
-        //   credentials: "include",
-        //   withCredentials: true,
-        // }
+        {
+          credentials: "include",
+          withCredentials: true,
+        }
       );
 
       setLogin(data.data);
