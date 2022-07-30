@@ -33,8 +33,8 @@ Signup.post('/', async (req, res) => {
         expiresIn: '15m',
       })
 
-      res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true })
-      res.cookie('accessToken', accessToken, { httpOnly: true, secure: true })
+      res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false })
+      res.cookie('accessToken', accessToken, { httpOnly: true, secure: false })
 
       return res.status(201).send({ username, email })
     })

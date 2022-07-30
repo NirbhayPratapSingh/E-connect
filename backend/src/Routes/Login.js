@@ -40,8 +40,8 @@ route.post('/', async (req, res) => {
       },
     )
 
-    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: true })
-    res.cookie('accessToken', accessToken, { httpOnly: true, secure: true })
+    res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false })
+    res.cookie('accessToken', accessToken, { httpOnly: true, secure: false })
 
     res.send({ username: exist.username, email })
   } catch (e) {
