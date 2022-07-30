@@ -6,7 +6,7 @@ const userModel = require('../models/User')
 
 const authRoute = Router();
 
-const CLIENT_URL = "https://e-connect-zeta.vercel.app/";
+const CLIENT_URL = "https://e-connect-zeta.vercel.app";
 
 authRoute.get("/login/success", async (req, res) => {
     let user = req.user;
@@ -37,8 +37,8 @@ authRoute.get("/login/success", async (req, res) => {
             },
         )
 
-        res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false })
-        res.cookie('accessToken', accessToken, { httpOnly: true, secure: false })
+        res.cookie('refreshToken', refreshToken, { httpOnly: true, secure: false, sameSite: "none" })
+        res.cookie('accessToken', accessToken, { httpOnly: true, secure: false, sameSite: "none" })
 
         // res.send({ username: exist.username, email })
         res.redirect(CLIENT_URL)
